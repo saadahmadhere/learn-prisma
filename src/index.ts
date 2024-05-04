@@ -1,4 +1,7 @@
 import { PrismaClient } from '@prisma/client';
+import * as dotenv from 'dotenv';
+
+dotenv.config();
 
 const prisma = new PrismaClient();
 
@@ -67,11 +70,11 @@ async function deleteUser(userName: string) {
 		console.log({ error });
 	}
 }
-// insertUser('saad2@test.com', 'saad', 'djfkajds');
+// insertUser('saad1@test.com', 'saad', 'djfkajds');
 
 // updateUser('saad1@test.com', {
 // 	firstName: 'saad update',
 // 	lastName: 'ahmad update',
 // });
 
-deleteUser('saad1@test.com');
+// deleteUser('saad1@test.com');
