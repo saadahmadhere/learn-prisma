@@ -8,16 +8,24 @@ async function insertUser(
 	password: string,
 	lastName?: string
 ) {
-	const response = await prima.user.create({
-		data: {
-			email: userName,
-			firstName,
-			lastName,
-			password,
-		},
-	});
-
-	console.log(response);
+	try {
+		const response = await prima.user.create({
+			data: {
+				email: userName,
+				firstName,
+				lastName,
+				password,
+			},
+			select: {
+				id: true,
+				email: true,
+				firstName: true,
+			},
+		});
+		console.log(response);
+	} catch (error) {
+		console.log('error: ', error);
+	}
 }
 
-insertUser('saad1@test.com', 'saad', 'djfkajds');
+insertUser('saad2@test.com', 'saad', 'djfkajds');
