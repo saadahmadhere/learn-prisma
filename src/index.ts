@@ -54,8 +54,24 @@ async function updateUser(
 	}
 }
 
+async function deleteUser(userName: string) {
+	try {
+		const res = await prisma.user.delete({
+			where: {
+				email: userName,
+			},
+		});
+
+		console.log('user deleted, ', res);
+	} catch (error) {
+		console.log({ error });
+	}
+}
 // insertUser('saad2@test.com', 'saad', 'djfkajds');
-updateUser('saad1@test.com', {
-	firstName: 'saad update',
-	lastName: 'ahmad update',
-});
+
+// updateUser('saad1@test.com', {
+// 	firstName: 'saad update',
+// 	lastName: 'ahmad update',
+// });
+
+deleteUser('saad1@test.com');
