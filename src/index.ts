@@ -6,7 +6,7 @@ async function insertUser(
 	userName: string,
 	firstName: string,
 	password: string,
-	lastName: string
+	lastName?: string
 ) {
 	const response = await prima.user.create({
 		data: {
@@ -19,3 +19,5 @@ async function insertUser(
 
 	console.log(response);
 }
+
+insertUser('saad1@test.com', 'saad', 'djfkajds');
