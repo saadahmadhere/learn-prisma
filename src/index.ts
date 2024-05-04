@@ -1,6 +1,11 @@
 import { PrismaClient } from '@prisma/client';
 
-const prima = new PrismaClient();
+const prisma = new PrismaClient();
+
+interface UpdateParams {
+	firstName: string;
+	lastName: string;
+}
 
 async function insertUser(
 	userName: string,
@@ -9,7 +14,7 @@ async function insertUser(
 	lastName?: string
 ) {
 	try {
-		const response = await prima.user.create({
+		const response = await prisma.user.create({
 			data: {
 				email: userName,
 				firstName,
@@ -28,4 +33,29 @@ async function insertUser(
 	}
 }
 
-insertUser('saad2@test.com', 'saad', 'djfkajds');
+async function updateUser(
+	userName: string,
+	{ firstName, lastName }: UpdateParams
+) {
+	try {
+		const updatedUser = await prisma.user.update({
+			where: {
+				email: userName,
+			},
+			data: {
+				firstName,
+				lastName,
+			},
+		});
+
+		console.log('user updated ', { updatedUser });
+	} catch (error) {
+		console.log('error ,', error);
+	}
+}
+
+// insertUser('saad2@test.com', 'saad', 'djfkajds');
+updateUser('saad1@test.com', {
+	firstName: 'saad update',
+	lastName: 'ahmad update',
+});
