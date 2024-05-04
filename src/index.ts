@@ -12,7 +12,7 @@ async function insertUser(
 		data: {
 			email: userName,
 			firstName,
-			LastName,
+			lastName,
 			password,
 		},
 	});
